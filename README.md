@@ -28,9 +28,13 @@ Esse sistema permite o acompanhamento remoto das condições da água, possibili
  Componente = Função 
 
  ESP32-C3 Mini = Leitura dos sensores 
+ 
 ESP32-S3 Xiao = Comunicação com a Internet 
+
  Sensor SHT31 = Temperatura 
+ 
  Sensor de Turbidez DigiKey V1.0 = Medição da turbidez 
+ 
  ThingSpeak = Plataforma IoT para armazenamento e visualização 
 
 ---
@@ -86,5 +90,5 @@ https://thingspeak.mathworks.com/channels/3430238
 
 21/07/2026
 
-## Esquema de Ligação 
+
 
