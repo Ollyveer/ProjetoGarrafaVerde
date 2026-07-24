@@ -65,7 +65,7 @@ Os dados enviados podem ser visualizados diretamente na plataforma ThingSpeak.
 
 
 
-![Dashboard](images/dashboard.png)
+![Dashboard](dashboard.jpeg)
 
 
 ---
