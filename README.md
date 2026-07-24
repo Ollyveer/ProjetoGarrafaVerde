@@ -6,11 +6,10 @@ Sistema de monitoramento da **temperatura** e da **turbidez** de rios e lagos ut
 
 ##  Sobre o Projeto
 
-O **Projeto Garrafa Verde** foi desenvolvido com o objetivo de monitorar a qualidade da água por meio da coleta automática de dados de **temperatura** e **turbidez**.
 
-Os dados são adquiridos por sensores conectados a um **ESP32-C3 Mini** e enviados para um **ESP32-S3 Xiao**, responsável pela comunicação com a plataforma **ThingSpeak**, onde as informações podem ser visualizadas em tempo real.
+O **Projeto Garrafa Verde** foi desenvolvido com o objetivo de monitorar a qualidade da água em rios e lagos por meio da medição da **temperatura** e da **turbidez**.
 
-Esse sistema permite o acompanhamento remoto das condições da água, possibilitando futuras aplicações em monitoramento ambiental.
+Para isso, um **ESP32-C3 Mini** realiza a leitura dos sensores conectados ao sistema e envia os dados coletados para a plataforma **ThingSpeak** utilizando uma conexão Wi-Fi. Os dados ficam disponíveis em um dashboard, permitindo o acompanhamento remoto e em tempo real das condições monitoradas.
 
 ---
 
@@ -27,10 +26,8 @@ Esse sistema permite o acompanhamento remoto das condições da água, possibili
 
  Componente = Função 
 
- ESP32-C3 Mini = Leitura dos sensores 
+ ESP32-C3 Mini = Aquisição dos dados, processamento e envio ao ThingSpeak 
  
-ESP32-S3 Xiao = Comunicação com a Internet 
-
  Sensor SHT31 = Temperatura 
  
  Sensor de Turbidez DigiKey V1.0 = Medição da turbidez 
@@ -43,13 +40,13 @@ ESP32-S3 Xiao = Comunicação com a Internet
 
 O sistema realiza continuamente a leitura dos sensores.
 
-1. O sensor **SHT31** mede a temperatura da água.
-2. O sensor de turbidez mede o nível de partículas presentes na água
-3. O ESP32-C3 Mini realiza a aquisição dos dados.
-4. As informações são enviadas ao ESP32-S3 Xiao.
+1. O sensor **SHT31** realiza a leitura da temperatura da água.
+2. O sensor de turbidez mede o nível de partículas presentes na água.
+3. O **ESP32-C3 Mini** recebe os dados dos sensores.
+4. O microcontrolador processa as informações coletadas.
 5. O ESP32 conecta-se à rede Wi-Fi.
-6. Os dados são enviados para o ThingSpeak.
-7. O usuário acompanha as medições remotamente através do dashboard.
+6. Os dados são enviados para a plataforma **ThingSpeak**.
+7. As informações podem ser visualizadas em tempo real por meio do dashboard do ThingSpeak.
 
 ---
 
