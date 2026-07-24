@@ -1,6 +1,10 @@
-// Use this file to store all of the private credentials 
-// and connection details
-
+/*
+ * Projeto      : Garrafa Verde
+ * Objetivo     : Monitorar a temperatura e a turbidez de rios e lagos.
+ * Data          : 21/07/2026
+ * Autores       : Bruna, Giovanna, Gabryella e Stefany
+*/
+//Confiigurações de acesso.
 #define SECRET_SSID "A"		// replace MySSID with your WiFi network name
 #define SECRET_PASS "B"	// replace MyPassword with your WiFi password
 
