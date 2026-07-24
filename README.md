@@ -50,7 +50,7 @@ O sistema realiza continuamente a leitura dos sensores.
 ---
 
 
-# 🔌 Esquema de Ligação
+#  Esquema de Ligação
 
 A figura abaixo apresenta a montagem do circuito utilizada durante o desenvolvimento.
 
@@ -59,13 +59,16 @@ A figura abaixo apresenta a montagem do circuito utilizada durante o desenvolvim
 
 ---
 
-# 📈 Monitoramento
+#  Monitoramento
 
 Os dados enviados podem ser visualizados diretamente na plataforma ThingSpeak.
 
 
 
-![Dashboard](dashboard.jpeg)
+![dashboard](dashboard.jpg)
+
+Acesse o dashboard público do projeto:
+https://thingspeak.mathworks.com/channels/3430238
 
 
 ---
