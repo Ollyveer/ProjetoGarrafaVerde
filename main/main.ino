@@ -1,14 +1,24 @@
 /*
-Projeto Garrafa Verde
-
-Autores:
-
- Eu
-
- Objetivo:
- asasd
-
- Data: 342rhkqwf
+  Projeto: Garrafa Verde
+  Objetivo: Monitorar a temperatura e a turbidez de rios e lagos.
+ 
+  Hardware:
+    - ESP32-C3 Mini
+    - Sensor de Temperatura e Umidade SHT31
+    - Sensor de Turbidez DigiKey Turbidity Sensor 1.0
+ 
+  Monitoramento IoT:
+    - ESP32-S3 Xiao
+   - Plataforma: ThingSpeak
+ 
+  Data: 21/07/2026
+ 
+  Autores:
+    - Bruna
+    - Giovanna
+    - Gabryella
+    - Stefany
+ 
 */
 
 //Bibliotecas
@@ -17,11 +27,11 @@ Autores:
 #include "Adafruit_SHT31.h"
 #include <WiFi.h>
 #include "secrets.h"
-#include "ThingSpeak.h" // always include thingspeak header file after other header files and custom macros
+#include "ThingSpeak.h" 
 
-// ==================== CONFIGURAÇÃO DOS SENSORES DE TURBIDEZ ====================
+// ==================== Configuração dos sensores de Turbidez ====================
 #define TURBIDITY_PIN_1 4
-// Valores de calibração (ajuste conforme seus testes)
+// Valores de calibração 
 #define VALUE_CLEAR_WATER   3500   // ADC em água limpa
 #define VALUE_TURBID_WATER  800    // ADC em água turva
 
@@ -51,9 +61,9 @@ void updateTurbiditySensor(TurbiditySensor *sensor);
 
 int contador = 0;
 
-char ssid[] = SECRET_SSID;   // your network SSID (name) 
-char pass[] = SECRET_PASS;   // your network password
-int keyIndex = 0;            // your network key Index number (needed only for WEP)
+char ssid[] = SECRET_SSID;   // SSID (nome) da sua rede Wi-Fi.SSID (nome) da sua rede Wi-Fi.
+char pass[] = SECRET_PASS;   // Senha da sua rede Wi-Fi.
+int keyIndex = 0;            //Número do índice da chave da rede (necessário apenas para WEP).
 WiFiClient  client;
 
 unsigned long myChannelNumber = SECRET_CH_ID;
@@ -61,7 +71,7 @@ const char * myWriteAPIKey = SECRET_WRITE_APIKEY;
 
 Adafruit_SHT31 sht31_1 = Adafruit_SHT31();
 
-// Initialize our values
+//Inicializar nossos valores.
 int number1 = 0;
 int number2 = random(0,100);
 int number3 = random(0,100);
@@ -69,19 +79,19 @@ int number4 = random(0,100);
 String myStatus = "";
 
 void setup() {
-  Serial.begin(115200);  //Initialize serial
+  Serial.begin(115200);  //Inicializar a comunicação serial.
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for Leonardo native USB port only
+    ; //Aguarda a conexão da porta serial. Necessário apenas para a porta USB nativa do Arduino.
   }
   
 
   
   WiFi.mode(WIFI_STA);   
-  ThingSpeak.begin(client);  // Initialize ThingSpeak
+  ThingSpeak.begin(client);  // Inicializar o ThingSpeak.
 
   Serial.println("Iniciando teste de UM SHT31...");
 
-// Inicializa o primeiro sensor (0x44)
+//  Inicializa o primeiro sensor (0x44)
   if (!sht31_1.begin(0x44)) {
     Serial.println("Sensor 1 (0x44) não encontrado!");
     while (1) delay(1);
@@ -131,19 +141,19 @@ void loop() {
   Serial.println("-----------------------------------");
 
 
-  // Connect or reconnect to WiFi
+  //Conecta ou reconecta ao Wi-Fi
   if(WiFi.status() != WL_CONNECTED){
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(SECRET_SSID);
     while(WiFi.status() != WL_CONNECTED){
-      WiFi.begin(ssid, pass);  // Connect to WPA/WPA2 network. Change this line if using open or WEP network
+      WiFi.begin(ssid, pass);  // Conecta-se a uma rede WPA/WPA2. Altere esta linha caso esteja utilizando uma rede aberta ou com criptografia WEP.
       Serial.print(".");
       delay(5000);     
     } 
     Serial.println("\nConnected.");
   }
 
-  // set the fields with the values
+  // Define os campos com os valores.
   ThingSpeak.setField(1, t1);
   ThingSpeak.setField(2, t2);
   
@@ -156,10 +166,10 @@ void loop() {
   Serial.println(myStatus);
 
 
-  // set the status
+  // Define o status.
   ThingSpeak.setStatus(myStatus);
   
-  // write to the ThingSpeak channel
+  // Envia os dados para o canal do ThingSpeak.
   int x = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
   if(x == 200){
     Serial.println("Channel update successful.");
@@ -170,7 +180,7 @@ void loop() {
   
  
   
-  delay(20000); // Wait 20 seconds to update the channel again
+  delay(20000); //Aguarda 20 segundos para atualizar o canal novamente
 }
 
 /**
